@@ -1,0 +1,9 @@
+# LedgerLine - Threat Model & Security Mitigations
+
+## 1. Concurrent Race Conditions / Double Spending
+* **Threat:** Simultaneous withdrawal requests reading the same account balance before writing the new balance.
+* **Mitigation:** Enforce pessimistic row locking (`FOR UPDATE`) in PostgreSQL and isolation levels on transfer transactions.
+
+## 2. Network Retries / Duplicate Transactions
+* **Threat:** Client connection drops during a request, causing a user to retry and accidentally execute duplicate money movement.
+* **Mitigation:** Require unique **Idempotency Keys** in request headers and record executed keys.
