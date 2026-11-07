@@ -7,8 +7,11 @@
 * **What Was Wrong / Risk:** The AI structure lacked explicit separation for security configs and double-entry validation layers.
 * **What I Did Instead:** Organized the package structure into dedicated packages (`model`, `repository`, `service`, `controller`, `config`) to maintain clean architecture.
 
-## Day 2: Domain Modeling & Double-Entry Bookkeeping
-- **Prompt/Goal:** Implemented core financial domain entities (`Transaction` and `LedgerEntry`) adhering to strict double-entry accounting standards and `BigDecimal` precision.
-- **Architectural Notes:** 
-  - Added a unique reference/idempotency key field in `Transaction` to prevent duplicate processing from network retries.
-  - Linked `LedgerEntry` with `DEBIT` and `CREDIT` types mapping back to specific accounts.
+Date: November 7, 2026
+
+* **Commit Link:** `feat: add User, Account, Transaction, and LedgerEntry domain entities`
+* **What I Asked:** Asked AI to model domain entities (`User`, `Account`, `Transaction`, `LedgerEntry`) for a double-entry ledger system.
+* **What the AI Produced:** Generated basic JPA entity classes for money transfer models.
+* **What Was Wrong / Risk:** Floating-point numbers (`double`/`float`) lead to precision loss and rounding errors in financial transactions.
+* **What I Did Instead:** Used `BigDecimal` with `@Column(precision = 19, scale = 4)` for exact financial accuracy, added unique idempotency keys in `Transaction`, and enforced double-entry `DEBIT`/`CREDIT` audit tracking.
+*
