@@ -10,8 +10,7 @@
 Date: November 7, 2026
 
 * **Commit Link:** `feat: add User, Account, Transaction, and LedgerEntry domain entities`
-* **What I Asked:** Asked AI to model domain entities (`User`, `Account`, `Transaction`, `LedgerEntry`) for a double-entry ledger system.
-* **What the AI Produced:** Generated basic JPA entity classes for money transfer models.
-* **What Was Wrong / Risk:** Floating-point numbers (`double`/`float`) lead to precision loss and rounding errors in financial transactions.
-* **What I Did Instead:** Used `BigDecimal` with `@Column(precision = 19, scale = 4)` for exact financial accuracy, added unique idempotency keys in `Transaction`, and enforced double-entry `DEBIT`/`CREDIT` audit tracking.
-*
+* **What I Asked:** Asked AI to design core domain entities (User, Account, Transaction, LedgerEntry) for money transfers.
+* **What the AI Produced:** Generated basic entity classes for standard transaction models.
+* **What Was Wrong / Risk:** Normal decimal numbers can lose accuracy and cause money rounding mistakes during calculations.
+* **What I Did Instead:** Enforced exact financial precision for balances, added transaction reference keys to stop duplicate payments, and tracked debit and credit entries separately for audit safety.
