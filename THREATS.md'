@@ -7,3 +7,12 @@
 ## 2. Network Retries / Duplicate Transactions
 * **Threat:** Client connection drops during a request, causing a user to retry and accidentally execute duplicate money movement.
 * **Mitigation:** Require unique **Idempotency Keys** in request headers and record executed keys.
+
+## 3. Balance Inconsistency & Precision Loss
+- **Threat:** Floating-point rounding errors (`double`/`float`) causing discrepancies in financial balances over time.
+- **Mitigation:** Enforced `@Column(precision = 19, scale = 4)` using `BigDecimal` across all monetary fields in `Account` and `LedgerEntry` entities.
+
+## 4. Double-Entry Integrity Failures
+- **Threat:** Unbalanced ledger entries where total debits do not equal total credits.
+- **Mitigation:** Structured transaction and ledger entry relationships to enforce balanced, immutable multi-legged accounting trails.
+-
