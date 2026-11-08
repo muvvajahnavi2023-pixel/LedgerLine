@@ -14,3 +14,11 @@ Date: November 7, 2026
 * **What the AI Produced:** Generated basic entity classes for standard transaction models.
 * **What Was Wrong / Risk:** Normal decimal numbers can lose accuracy and cause money rounding mistakes during calculations.
 * **What I Did Instead:** Enforced exact financial precision for balances, added transaction reference keys to stop duplicate payments, and tracked debit and credit entries separately for audit safety.
+
+Date: November 8, 2026
+
+* **Commit Link:** `feat: add Spring Data JPA repositories with pessimistic locking`
+* **What I Asked:** Asked AI to design repository interfaces for database access across all entities.
+* **What the AI Produced:** Generated basic JpaRepository interfaces.
+* **What Was Wrong / Risk:** Standard database reads allow concurrent transactions to read stale balances, leading to double spending.
+* **What I Did Instead:** Added `findByIdWithLock` in `AccountRepository` with pessimistic write locking (`FOR UPDATE`) to lock account rows during transfers.
