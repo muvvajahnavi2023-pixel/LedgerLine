@@ -22,3 +22,11 @@ Date: November 8, 2026
 * **What the AI Produced:** Generated basic JpaRepository interfaces.
 * **What Was Wrong / Risk:** Standard database reads allow concurrent transactions to read stale balances, leading to double spending.
 * **What I Did Instead:** Added `findByIdWithLock` in `AccountRepository` with pessimistic write locking (`FOR UPDATE`) to lock account rows during transfers.
+
+Date: November 9, 2026
+
+* **Commit Link:** `feat: add LedgerController and DTOs for money transfer API`
+* **What I Asked:** Asked AI to expose HTTP endpoints for performing money transfers between accounts.
+* **What the AI Produced:** Generated a basic REST controller accepting transfer payloads.
+* **What Was Wrong / Risk:** Uncontrolled endpoint input can cause runtime exceptions or improper HTTP responses during invalid transfers.
+* **What I Did Instead:** Created explicit TransferRequest DTOs and wrapped endpoint calls in structured HTTP response handlers with proper error catching.
