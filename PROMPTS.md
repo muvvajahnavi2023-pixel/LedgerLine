@@ -30,3 +30,11 @@ Date: November 9, 2026
 * **What the AI Produced:** Generated a basic REST controller accepting transfer payloads.
 * **What Was Wrong / Risk:** Uncontrolled endpoint input can cause runtime exceptions or improper HTTP responses during invalid transfers.
 * **What I Did Instead:** Created explicit TransferRequest DTOs and wrapped endpoint calls in structured HTTP response handlers with proper error catching.
+
+Date: November 10, 2026
+
+* **Commit Link:** `feat: create frontend UI dashboard for ledger transfers`
+* **What I Asked:** Asked AI to design a frontend user interface to interact with the backend transfer API.
+* **What the AI Produced:** Generated an HTML/JS template for submitting money transfers.
+* **What Was Wrong / Risk:** Unvalidated frontend inputs or raw error exposures could degrade UX or obscure API error responses.
+* **What I Did Instead:** Built a clean interactive form capturing explicit source/target accounts, amounts, and idempotency references with structured feedback alerts.
