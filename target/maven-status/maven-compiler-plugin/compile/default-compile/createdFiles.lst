@@ -1,0 +1,13 @@
+com\snovasys\ledgerline\controller\LedgerController.class
+com\snovasys\ledgerline\repository\TransactionRepository.class
+com\snovasys\ledgerline\model\Transaction.class
+com\snovasys\ledgerline\repository\UserRepository.class
+com\snovasys\ledgerline\service\LedgerService.class
+com\snovasys\ledgerline\model\User.class
+com\snovasys\ledgerline\controller\AuthController.class
+com\snovasys\ledgerline\dto\TransferRequest.class
+com\snovasys\ledgerline\model\Account.class
+com\snovasys\ledgerline\model\LedgerEntry.class
+com\snovasys\ledgerline\LedgerLineApplication.class
+com\snovasys\ledgerline\repository\AccountRepository.class
+com\snovasys\ledgerline\repository\LedgerEntryRepository.class
